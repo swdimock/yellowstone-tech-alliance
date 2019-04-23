@@ -4,23 +4,23 @@ var gulp = require('gulp'),
 var autoprefixer = require('gulp-autoprefixer');
 var concat = require('gulp-concat');
 var sass = require('gulp-sass');
-var browserSync = require('browser-sync');
+// var browserSync = require('browser-sync');
 
-gulp.task('browser-sync', function() {
-    browserSync({
-        server: {
-            baseDir: "./"
-        }
-    });
-});
-
-gulp.task('bs-reload', function () {
-    browserSync.reload();
-});
+// gulp.task('browser-sync', function() {
+//     browserSync({
+//         server: {
+//             baseDir: "./"
+//         }
+//     });
+// });
+//
+// gulp.task('bs-reload', function () {
+//     browserSync.reload();
+// });
 
 
 gulp.task('styles', function(){
-    gulp.src(['assets/stylesheets/lib/**/*.scss'])
+    gulp.src(['assets/stylesheets/lib/main.sass'])
         .pipe(plumber({
             errorHandler: function (error) {
                 console.log(error.message);
@@ -29,7 +29,7 @@ gulp.task('styles', function(){
         .pipe(sass())
         .pipe(autoprefixer('last 2 versions'))
         .pipe(gulp.dest('assets/stylesheets/dist/'))
-        .pipe(browserSync.reload({stream:true}))
+        // .pipe(browserSync.reload({stream:true}))
 });
 
 gulp.task('scripts', function(){
@@ -41,11 +41,11 @@ gulp.task('scripts', function(){
             }}))
         .pipe(concat('main.js'))
         .pipe(gulp.dest('assets/scripts/dist/'))
-        .pipe(browserSync.reload({stream:true}))
+        // .pipe(browserSync.reload({stream:true}))
 });
 
-gulp.task('default', ['browser-sync'], function(){
-    gulp.watch("assets/stylesheets/lib/**/*.scss", ['styles']);
+gulp.task('default', [], function(){
+    gulp.watch("assets/stylesheets/lib/**/*.sass", ['styles']);
     gulp.watch("assets/scripts/lib/**/*.js", ['scripts']);
-    gulp.watch("*.html", ['bs-reload']);
+    // gulp.watch("*.html", ['bs-reload']);
 });

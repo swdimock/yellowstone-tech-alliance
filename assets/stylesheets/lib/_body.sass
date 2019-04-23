@@ -1,5 +1,60 @@
 body
-  background: white url('../../images/background.png')
+  background: white url(../../images/background.png) no-repeat
+  background-size: 100%
+  padding: 5em 0
+  font-family: 'Open Sans', sans-serif
+
+h1, h2, h3
+  font-size: 32px
+  font-weight: 700
+  line-height: 1.5em
+  margin: 1em 0 0.5em
+  color: #626e71
 
 img
   max-width: 100%
+
+p, ul
+  font-size: 20px
+  margin-bottom: 1em
+  line-height: 1.5em
+
+  &:last-of-type
+    margin-bottom: 0
+
+a, a:focus, a:hover, a:active
+  text-decoration: none
+  color: #0884e3
+
+  &:hover
+    color: lighten(#0884e3, 20%)
+
+// Structure
+#partners
+  margin-top: 2em
+
+  img
+    max-height: 80px
+
+  .center
+    display: flex
+    justify-content: center
+    align-items: center
+
+#involvement
+
+  ul
+
+    li
+
+      &:before, &:after
+        content: '-'
+
+      &:before
+        margin-right: 0.5em
+
+      &:after
+        margin-left: 0.5em
+
+#contact
+  margin-top: 2em
